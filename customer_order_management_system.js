@@ -6,4 +6,6 @@ let inventory = [
     {name: "Cappuccino",  price: 4, quanitiy: 10},
     {name: "Frappuccino", price: 7, quanitiy: 8}
 ];
-console.log(inventory[1]);
+
+// Task 2: Create an Orders Array of Order Objects
+let orders = [];
