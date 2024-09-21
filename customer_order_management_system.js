@@ -36,6 +36,11 @@ function placeOrder (customerName, itemsOrdered) {
                 });
     console.log(`${customerName} your order has been placed!`) // on the customer side it will output a message telling them the order has been placed
 }
+// Test data
+placeOrder('Joseph M.', [{ name: 'Americano', quantity: 24 }]); 
+placeOrder('Scott D.', [{ name: 'Cappuccino', quantity: 5 }]); 
+console.log(orders[0]);
+
 
 // Task 4: Create a Function to Calculate Total for an Order
 
@@ -48,6 +53,8 @@ function calculateOrderTotal (order, total = 0) { // added a parameter of total 
     });
     return total; // will return the total price of the customers order
 };
+// Test Data
+console.log(`Total - $${calculateOrderTotal(orders[0])}`)
 
 
 // Task 5: Create a Function to Mark an Order as Completed
@@ -57,6 +64,25 @@ function completeOrder(customerName) {
             customerOrder.status = 'Completed'; // will change the order status from pending to completed
             console.log(`${customerName} your order has been completed!`) // Will output a message telling them the order has been completed
         } else {
-            console.log(`Order ERROR for ${customerName}`);
+            console.log(`Order ERROR for ${customerName}`); // if found it will just spit out an error
         }
 };
+// Test Data
+completeOrder('Joseph M.');
+completeOrder('Scott D.');
+
+
+// Task 6: Create a Function to Check Pending Orders
+function checkPendingOrders (orders) {
+    orders.forEach(customerOrder => {
+        if (customerOrder.status === 'Pending') {
+            console.log(`Order is still pending for ${customerOrder.customerName}`);
+        }
+    });
+    checkPendingOrders();
+};
+
+
+
+
+
