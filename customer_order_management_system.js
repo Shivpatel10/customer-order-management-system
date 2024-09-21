@@ -39,12 +39,24 @@ function placeOrder (customerName, itemsOrdered) {
 
 // Task 4: Create a Function to Calculate Total for an Order
 
-function completeOrder (order, total = 0) { // added a parameter of total = 0 to start it at a value of 0
+function calculateOrderTotal (order, total = 0) { // added a parameter of total = 0 to start it at a value of 0
     order.items.forEach( item => { // creating a forEach loop so it will go to the orders array and check the items 
         let coffee = inventory.find( product => product.name === item.name); // reusing coffee like i did before
         if (coffee) {
             total += coffee.price * item.quantity; // this will start with total at 0 and add the what ever coffee price is in terms of how much is ordered/
         }
     });
-    return total;
+    return total; // will return the total price of the customers order
+};
+
+
+// Task 5: Create a Function to Mark an Order as Completed
+function completeOrder(customerName) {
+    const customerOrder = orders.find(order => order.customerName === customerName); // this constant will find the customers order using customerName
+        if (customerOrder) {
+            customerOrder.status = 'Completed'; // will change the order status from pending to completed
+            console.log(`${customerName} your order has been completed!`) // Will output a message telling them the order has been completed
+        } else {
+            console.log(`Order ERROR for ${customerName}`);
+        }
 };
